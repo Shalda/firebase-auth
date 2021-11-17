@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fbauth-853b0": {
+      "hosting": {
+        "firebase-auth": [
+          "fbauth-853b0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fbauth-853b0"
+  }
+}
