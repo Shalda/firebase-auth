@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat';
 import UserCredential = firebase.auth.UserCredential;
@@ -17,11 +16,7 @@ export class SignInComponent implements OnInit {
   email_address: string = '';
   password: string = '';
 
-  constructor(
-    private router: Router,
-    private _AuthService: AuthService,
-    public fbAuth: AngularFireAuth
-  ) {}
+  constructor(private router: Router, public fbAuth: AngularFireAuth) {}
 
   onSignIn(form: NgForm) {
     if (form.valid) {
@@ -47,10 +42,9 @@ export class SignInComponent implements OnInit {
               email: user.email,
             },
             token: idToken,
-            refreshToken: user.refreshToken
+            refreshToken: user.refreshToken,
           };
           localStorage.setItem('userData', JSON.stringify(userObj));
-          this._AuthService.setLogginSatuts(true);
           this.router.navigate(['dashboard']);
         });
       } else {
